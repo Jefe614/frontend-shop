@@ -92,16 +92,16 @@ const SalesPage = () => {
   };
 
   if (error) {
-    return <div className="text-red-500">Error: {error}</div>;
+    return <div className="text-red-500 text-center p-4">Error: {error}</div>;
   }
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
-      <h1 className="text-4xl font-semibold text-gray-800 mb-8 text-center">Sales Data</h1>
+      <h1 className="text-4xl font-semibold text-gray-800 mb-8 text-center animate__animated animate__fadeIn">Sales Data</h1>
       
       {/* Filter Form */}
       <div className="flex justify-center mb-6">
-        <form className="bg-white shadow-md rounded-lg p-6 flex flex-col space-y-4 w-full max-w-4xl">
+        <form className="bg-white shadow-lg rounded-lg p-6 flex flex-col space-y-4 w-full max-w-4xl animate__animated animate__fadeIn animate__delay-1s">
           <div className="flex flex-col md:flex-row md:space-x-4">
             <div className="flex flex-col w-full">
               <label htmlFor="shop" className="text-gray-700 font-medium mb-1">Filter by Shop:</label>
@@ -110,7 +110,7 @@ const SalesPage = () => {
                 id="shop"
                 value={filter.shop}
                 onChange={handleFilterChange}
-                className="form-select mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                className="form-select mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out"
               >
                 <option value="">All Shops</option>
                 {shops.map(shop => (
@@ -128,13 +128,13 @@ const SalesPage = () => {
                 id="date"
                 value={filter.date}
                 onChange={handleFilterChange}
-                className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out"
               />
             </div>
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300 ease-in-out"
           >
             Apply Filters
           </button>
@@ -142,8 +142,8 @@ const SalesPage = () => {
       </div>
 
       {/* Sales Table */}
-      <div className="overflow-x-auto shadow-lg rounded-lg">
-        <table className="min-w-full bg-white rounded-lg">
+      <div className="overflow-x-auto shadow-lg rounded-lg mb-6">
+        <table className="min-w-full bg-white rounded-lg animate__animated animate__fadeIn">
           <thead className="bg-blue-500 text-white">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Shop Name</th>
@@ -157,7 +157,7 @@ const SalesPage = () => {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {paginatedSales.map((sale) => (
-              <tr key={sale.id} className="hover:bg-gray-100 transition-all">
+              <tr key={sale.id} className="hover:bg-gray-100 transition-all duration-300 ease-in-out">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{shops.find(shop => shop.id === sale.shop)?.name || 'Unknown'}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(sale.date).toLocaleDateString()}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{sale.cash_in}</td>
@@ -167,13 +167,13 @@ const SalesPage = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 flex space-x-2">
                   <button
                     onClick={() => handleEdit(sale.id)}
-                    className="bg-yellow-500 text-white py-1 px-2 rounded-md shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50"
+                    className="bg-yellow-500 text-white py-1 px-2 rounded-md shadow-md hover:bg-yellow-600 transition-all duration-300 ease-in-out"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(sale.id)}
-                    className="bg-red-500 text-white py-1 px-2 rounded-md shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                    className="bg-red-500 text-white py-1 px-2 rounded-md shadow-md hover:bg-red-600 transition-all duration-300 ease-in-out"
                   >
                     Delete
                   </button>
@@ -189,7 +189,7 @@ const SalesPage = () => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50"
+          className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition-all duration-300 ease-in-out disabled:opacity-50"
         >
           Previous
         </button>
@@ -197,7 +197,7 @@ const SalesPage = () => {
           <button
             key={i}
             onClick={() => handlePageChange(i + 1)}
-            className={`px-4 py-2 mx-1 rounded-md shadow-md ${currentPage === i + 1 ? 'bg-blue-600 text-white' : 'bg-blue-500 text-white'} hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`}
+            className={`px-4 py-2 mx-1 rounded-md ${currentPage === i + 1 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'} transition-all duration-300 ease-in-out`}
           >
             {i + 1}
           </button>
@@ -205,7 +205,7 @@ const SalesPage = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50"
+          className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition-all duration-300 ease-in-out disabled:opacity-50"
         >
           Next
         </button>

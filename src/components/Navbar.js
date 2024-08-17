@@ -5,14 +5,14 @@ import AuthContext from '../context/AuthContext';
 const Navbar = () => {
     const location = useLocation();
     const path = location.pathname;
-    const { isAuthenticated, logout } = useContext(AuthContext);
+    const { isAuthenticated, logout, user } = useContext(AuthContext);
 
     return (
         <nav className="bg-gradient-to-r from-blue-900 via-blue-600 to-blue-300 p-4">
             <div className="container mx-auto flex flex-wrap items-center justify-between">
                 <Link 
-                    to="/sales" 
-                    className={`text-white text-2xl font-bold ${path === '/sales' ? 'text-yellow-300' : ''}`}
+                    to="/" 
+                    className={`text-white text-2xl font-bold ${path === '/' ? 'text-yellow-300' : ''}`}
                 >
                     My Shop
                 </Link>
@@ -34,30 +34,7 @@ const Navbar = () => {
                         className={`text-white hover:text-yellow-300 ${path === '/performance' ? 'font-bold' : ''}`}
                     >
                         Performance
-                    </Link>
-                    {isAuthenticated ? (
-                        <>
-                            <button
-                                onClick={logout}
-                                className="text-white hover:text-yellow-300 border border-white px-4 py-2 rounded"
-                            >
-                                Sign Out
-                            </button>
-                            <Link
-                                to="/profile"
-                                className="text-white hover:text-yellow-300 border border-white px-4 py-2 rounded"
-                            >
-                                Profile
-                            </Link>
-                        </>
-                    ) : (
-                        <Link
-                            to="/login"
-                            className="text-white hover:text-yellow-300 border border-white px-4 py-2 rounded"
-                        >
-                            Sign In
-                        </Link>
-                    )}
+                    </Link>/
                 </div>
             </div>
         </nav>

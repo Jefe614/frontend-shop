@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const API_BASE_URL = 'https://react-shop-0h3k.onrender.com/api/'; // Updated base URL
+const API_BASE_URL = 'https://react-shop-0h3k.onrender.com/api/';
 
 const AuthContext = createContext();
 
@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem('authToken', authToken);
         localStorage.setItem('refreshToken', refreshToken);
+        setIsAuthenticated(!!authToken);
     }, [authToken, refreshToken]);
 
     const login = async (email, password) => {
@@ -62,7 +63,7 @@ export const AuthProvider = ({ children }) => {
             setUser(null);
             localStorage.removeItem('authToken');
             localStorage.removeItem('refreshToken');
-            navigate('/');
+            navigate('/login');
         }
     };
 
@@ -78,9 +79,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        localStorage.setItem('authToken', authToken);
         if (authToken) {
-            // Fetch user details
             axios.get(`${API_BASE_URL}auth/users/me/`, {
                 headers: { Authorization: `Bearer ${authToken}` }
             })
@@ -96,6 +95,7 @@ export const AuthProvider = ({ children }) => {
             setIsLoading(false);
         }
     }, [authToken, navigate]);
+
     useEffect(() => {
         const interval = setInterval(() => {
             if (isAuthenticated && refreshToken) {
