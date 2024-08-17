@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import SalesPage from './components/SalesPage';
+import AddSalePage from './pages/AddSalePage';
+import PerformancePage from './components/Performance';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import Navbar from './components/Navbar';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Navbar />
+            <Routes>
+                <Route path="/sales" element={<SalesPage />} />
+                <Route path="/sales/new" element={<AddSalePage />} />
+                <Route path="/performance" element={<PerformancePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                {/* Add more routes as needed */}
+            </Routes>
+        </>
+    );
 }
 
 export default App;
