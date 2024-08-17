@@ -13,7 +13,7 @@ const PerformancePage = () => {
     useEffect(() => {
         const fetchPerformanceData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/performance/');
+                const response = await axios.get('https://react-shop-0h3k.onrender.com/api/performance/');
                 setShopData(response.data.shop_data);
                 setChartData(response.data.chart_data);
                 setAlerts(response.data.alerts);

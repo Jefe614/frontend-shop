@@ -16,7 +16,7 @@ const SalesPage = () => {
   useEffect(() => {
     const fetchSalesData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/sales/');
+        const response = await fetch('https://react-shop-0h3k.onrender.com/sales/');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -33,7 +33,7 @@ const SalesPage = () => {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const response = await fetch('http://localhost:8000/shops/');
+        const response = await fetch('https://react-shop-0h3k.onrender.com/shops/');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -72,7 +72,7 @@ const SalesPage = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this sale?")) {
       try {
-        const response = await fetch(`http://localhost:8000/sales/${id}/`, {
+        const response = await fetch(`https://react-shop-0h3k.onrender.com/sales/${id}/`, {
           method: 'DELETE',
         });
         if (!response.ok) {

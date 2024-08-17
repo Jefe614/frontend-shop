@@ -11,7 +11,7 @@ const SignupPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('http://localhost:8000/signup/', { username, email, password });
+            const response = await api.post('https://react-shop-0h3k.onrender.com/signup/', { username, email, password });
             
             // Store tokens in localStorage or cookies
             localStorage.setItem('accessToken', response.data.access);

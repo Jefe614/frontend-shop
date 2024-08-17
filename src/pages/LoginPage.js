@@ -13,7 +13,7 @@ const LoginPage = () => {
         e.preventDefault();
         try {
             // Replace with your login API call
-            await axios.post('http://127.0.0.1:8000/api/token/', { email, username, password });
+            await axios.post('https://react-shop-0h3k.onrender.com/api/token/', { email, username, password });
             navigate('/'); // Redirect to homepage on successful login
         } catch (err) {
             setError('Login failed. Please check your credentials.');

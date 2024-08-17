@@ -34,7 +34,7 @@ const AddSalePage = () => {
     if (image) formData.append('image', image);
 
     try {
-      const response = await axios.post('http://localhost:8000/sales/', formData, {
+      const response = await axios.post('https://react-shop-0h3k.onrender.com/sales/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

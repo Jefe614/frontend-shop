@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: 'https://react-shop-0h3k.onrender.com',
   headers: {
     'Content-Type': 'application/json',
   },
